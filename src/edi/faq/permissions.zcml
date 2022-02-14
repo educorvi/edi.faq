@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="edi.faq.AddAnswer"
+        title="edi.faq: Add Answer"
+    />
+
+
+    <permission
         id="edi.faq.AddQuestion"
         title="edi.faq: Add Question"
     />

@@ -3,6 +3,14 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission name="edi.faq: Add Answer" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
     <permission name="edi.faq: Add Question" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
