@@ -1,0 +1,5 @@
+=======
+edi.faq
+=======
+
+User documentation
