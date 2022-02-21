@@ -19,6 +19,12 @@
 
   <!-- Hierarchy control -->
   <property name="global_allow">False</property>
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types">
+    <element value="Image" />
+    <element value="File" />
+  </property>
+
   <!-- Schema, class and security -->
   <property name="add_permission">edi.faq.AddAnswer</property>
   <property name="klass">edi.faq.content.answer.Answer</property>
@@ -28,9 +34,6 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
-    <!-- Details about all standard behaviors following can be read at
-         https://docs.plone.org/external/plone.app.dexterity/docs/reference/standard-behaviours.html
-    -->
     <element value="plone.namefromtitle"/>
     <element value="plone.allowdiscussion"/>
     <element value="plone.excludefromnavigation"/>
@@ -38,15 +41,14 @@
     <element value="plone.ownership"/>
     <element value="plone.publication"/>
     <element value="plone.categorization"/>
-    <element value="plone.basic"/>
     <element value="plone.locking" />
-    <!--<element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />-->
-    <!--<element value="plone.leadimage"/>-->
-    <!--<element value="plone.relateditems"/>-->
-    <!--<element value="plone.richtext"/>-->
-    <!--<element value="plone.tableofcontents"/>-->
-    <!--<element value="plone.versioning" />-->
-    <!--<element value="plone.translatable" />-->
+    <element value="nva.folderbehaviors.barrierefreiheit.IBarrierefreiheit"/>
+    <element value="nva.folderbehaviors.downloads.IDownloads"/>
+    <element value="nva.folderbehaviors.einstellungen.IEinstellungen"/>
+    <element value="nva.folderbehaviors.cards.ICards"/>
+    <element value="nva.folderbehaviors.titelbild.ITitelbild"/>
+    <element value="nva.webcode.webcode"/>
+    <element value="plone.leadimage"/>
   </property>
 
   <!-- View information -->

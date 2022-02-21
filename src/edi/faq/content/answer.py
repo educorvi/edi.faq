@@ -1,63 +1,37 @@
 # -*- coding: utf-8 -*-
-# from plone.app.textfield import RichText
-# from plone.autoform import directives
-from plone.dexterity.content import Item
-# from plone.namedfile import field as namedfile
+from datetime import datetime
+from plone import api as ploneapi
+from plone.app.textfield import RichText
+from plone.autoform import directives
+from plone.dexterity.content import Container
 from plone.supermodel import model
-# from plone.supermodel.directives import fieldset
-# from z3c.form.browser.radio import RadioFieldWidget
-# from zope import schema
+from zope import schema
 from zope.interface import implementer
 
 
-# from edi.faq import _
+rom edi.faq import _
 
+def create_title()
+    now = datetime.now().strftime("%d.%m.%Y")
+    user = ''
+    if not ploneapi.user.is_anonymous():
+        user = api.user.get_current().getProperty('fullname')
+    title = f"Antwort von {user} vom {now}"
+    return title
+    
 
 class IAnswer(model.Schema):
     """ Marker interface and Dexterity Python Schema for Answer
     """
-    # If you want, you can load a xml model created TTW here
-    # and customize it in Python:
 
-    # model.load('answer.xml')
+    directives.mode(secret='display')
+    title = schema.TextLine(title="Kopfzeile der Antwort (Name und Datum)",
+            defaultFactory = create_title)
 
-    # directives.widget(level=RadioFieldWidget)
-    # level = schema.Choice(
-    #     title=_(u'Sponsoring Level'),
-    #     vocabulary=LevelVocabulary,
-    #     required=True
-    # )
-
-    # text = RichText(
-    #     title=_(u'Text'),
-    #     required=False
-    # )
-
-    # url = schema.URI(
-    #     title=_(u'Link'),
-    #     required=False
-    # )
-
-    # fieldset('Images', fields=['logo', 'advertisement'])
-    # logo = namedfile.NamedBlobImage(
-    #     title=_(u'Logo'),
-    #     required=False,
-    # )
-
-    # advertisement = namedfile.NamedBlobImage(
-    #     title=_(u'Advertisement (Gold-sponsors and above)'),
-    #     required=False,
-    # )
-
-    # directives.read_permission(notes='cmf.ManagePortal')
-    # directives.write_permission(notes='cmf.ManagePortal')
-    # notes = RichText(
-    #     title=_(u'Secret Notes (only for site-admins)'),
-    #     required=False
-    # )
+    text = RichText(title="Antworttext zur Fragestellung", required=True)
 
 
 @implementer(IAnswer)
-class Answer(Item):
+class Answer(Container):
     """
     """
