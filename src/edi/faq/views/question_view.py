@@ -7,11 +7,17 @@ from Products.Five.browser import BrowserView
 
 
 class QuestionView(BrowserView):
-    # If you want to define a template here, please remove the template from
-    # the configure.zcml registration of this view.
-    # template = ViewPageTemplateFile('question_view.pt')
 
     def __call__(self):
-        # Implement your own actions:
-        self.msg = _(u'A small message')
+        brains = self.context.getFolderContents()
+        contents = []
+        for i in brains:
+            entry = {}
+            obj = i.getObject()
+            entry['title'] = obj.title
+            entry['text'] = ''
+            if obj.text:
+                entry['text'] = obj.text.output
+            contents.append(entry)
+        self.contents = contents    
         return self.index()
